@@ -9,7 +9,7 @@ const apiRoutes = require("./routes/apiRoutes");
 const htmlRoutes = require("./routes/htmlRoutes");
 
 // Express middleware
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
@@ -17,6 +17,7 @@ app.use(express.static("public"));
 app.use("/api", apiRoutes);
 app.use("/", htmlRoutes);
 
+// app is listening to the port
 app.listen(PORT, () => {
   console.log(`API server now on port ${PORT}!`);
 });
