@@ -10,9 +10,6 @@ let notes = require("../data/db.json");
 
 //GET notes
 router.get("/notes", (req, res) => {
-  // read notes
-  // let dbNotes = JSON.parse(fs.readFileSync("./data/db.json", "utf8"))
-
   res.json(notes);
 });
 
@@ -22,7 +19,7 @@ router.post("/notes", (req, res) => {
   notes.push(req.body);
 
   fs.writeFileSync("./data/db.json", JSON.stringify(notes));
-  res.json(notes);
+  return res.json(notes);
 });
 
 //DELETE notes
@@ -30,7 +27,8 @@ router.delete("/notes/:id", (req, res) => {
   let id = req.params.id;
   let newNotes = notes.filter((note) => note.id !== id);
   fs.writeFileSync("./data/db.json", JSON.stringify(newNotes));
-  res.json(newNotes);
+  // res.json(newNotes);
+  res.end();
 });
 
 module.exports = router;
