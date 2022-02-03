@@ -1,1 +1,12 @@
-[{"title":"Call Amazon tomorrow","text":"They mixed up my refund.","id":1},{"title":"Hiking with my dog ","text":"Take Mocha to hike on Sunday morning.","id":2}]
+[
+    {
+        "title": "Call Amazon tomorrow",
+        "text": "They mixed up my refund.",
+        "id": 1
+    },
+    {
+        "title": "Hiking with my dog ",
+        "text": "Take Mocha to hike on Sunday morning.",
+        "id": 2
+    }
+]
