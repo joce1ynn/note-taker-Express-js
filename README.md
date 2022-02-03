@@ -3,7 +3,7 @@
 ## Description
 This Note Taker app can be used to write, save and delete notes. It uses an Express.js back end and will save and retrieve note data from a JSON file.
 
-[Click me to start the Note Taker app!](https://serene-lowlands-27039.herokuapp.com/notes)
+[Click me to start the Note Taker app!](https://serene-lowlands-27039.herokuapp.com)
 
 ## Build With
 * HTML
