@@ -3,7 +3,7 @@ const router = require("express").Router();
 const fs = require("fs");
 
 // 'uuid' npm package for unique id:
-const { v4: uuidv4 } = require("uuid");
+// const { v4: uuidv4 } = require("uuid");
 
 // imports notes
 // let notes = require("../data/db.json"); REQUIRE ONLY READ ONCE
@@ -16,8 +16,10 @@ router.get("/notes", (req, res) => {
 
 //create notes
 router.post("/notes", (req, res) => {
-  req.body.id = uuidv4();
   let notes = JSON.parse(fs.readFileSync("./data/db.json", "utf8"));
+  let id = notes.length + 1;
+  req.body.id = id;
+  // req.body.id = uuidv4();
   notes.push(req.body);
 
   fs.writeFileSync("./data/db.json", JSON.stringify(notes));
