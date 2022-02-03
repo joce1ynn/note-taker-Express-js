@@ -6,28 +6,31 @@ const fs = require("fs");
 const { v4: uuidv4 } = require("uuid");
 
 // imports notes
-let notes = require("../data/db.json");
+// let notes = require("../data/db.json"); REQUIRE ONLY READ ONCE
 
 //GET notes
 router.get("/notes", (req, res) => {
+  let notes = JSON.parse(fs.readFileSync("./data/db.json", "utf8"));
   res.json(notes);
 });
 
 //create notes
 router.post("/notes", (req, res) => {
   req.body.id = uuidv4();
+  let notes = JSON.parse(fs.readFileSync("./data/db.json", "utf8"));
   notes.push(req.body);
 
   fs.writeFileSync("./data/db.json", JSON.stringify(notes));
-  return res.json(notes);
+  res.json(notes);
 });
 
 //DELETE notes
 router.delete("/notes/:id", (req, res) => {
   let id = req.params.id;
+  let notes = JSON.parse(fs.readFileSync("./data/db.json", "utf8"));
   let newNotes = notes.filter((note) => note.id !== id);
+
   fs.writeFileSync("./data/db.json", JSON.stringify(newNotes));
-  // res.json(newNotes);
   res.end();
 });
 
